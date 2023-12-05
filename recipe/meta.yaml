@@ -23,13 +23,12 @@ requirements:
 
 test:
   commands:
-    - if not exist %PREFIX_LIB%\include\ansicon.h exit 1     # [win]
-    - if not exist %PREFIX_LIB%\include\ansicon.rc exit 1     # [win]
-    - if not exist %PREFIX_BIN%\ansicon.exe exit 1     # [win]
-    - if not exist %PREFIX_BIN%\ANSI64.dll exit 1     # [win]
-    - if not exist %PREFIX_BIN%\ANSI64.dll exit 1     # [win]
-    - if not exist %PREFIX_LIB%\ANSI64.exp exit 1     # [win]
-    - if not exist %PREFIX_LIB%\ANSI64.lib exit 1     # [win]
+    - if not exist %LIBRARY_INC%\ansicon.h exit 1     # [win]
+    - if not exist %LIBRARY_INC%\ansicon.rc exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\ansicon.exe exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\ANSI64.dll exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\ANSI64.exp exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\ANSI64.lib exit 1     # [win]
 
 about:
   home: https://github.com/adoxa/ansicon
