@@ -14,13 +14,21 @@ source:
 build:
   number: 0
   skip: true  # [not win]
-  script: install.bat
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c')}}
     - m2-patch  # [win]
+
+tests:
+  commands:
+    - if not exist %PREFIX_LIB%\include\ansicon.h exit 1     # [win]
+    - if not exist %PREFIX_LIB%\include\ansicon.rc exit 1     # [win]
+    - if not exist %PREFIX_BIN%\ANSI32.dll exit 1     # [win]
+    - if not exist %PREFIX_LIB%\ANSI32.exp exit 1     # [win]
+    - if not exist %PREFIX_LIB%\ANSI32.lib exit 1     # [win]
+        
 
 about:
   home: https://github.com/adoxa/ansicon
