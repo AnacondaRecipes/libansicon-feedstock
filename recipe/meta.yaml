@@ -25,14 +25,15 @@ tests:
   commands:
     - if not exist %PREFIX_LIB%\include\ansicon.h exit 1     # [win]
     - if not exist %PREFIX_LIB%\include\ansicon.rc exit 1     # [win]
-    - if not exist %PREFIX_BIN%\ANSI32.dll exit 1     # [win]
-    - if not exist %PREFIX_LIB%\ANSI32.exp exit 1     # [win]
-    - if not exist %PREFIX_LIB%\ANSI32.lib exit 1     # [win]
-        
+    - if not exist %PREFIX_BIN%\ANSI64.dll exit 1     # [win]
+
+    - if not exist %PREFIX_BIN%\ANSI64.dll exit 1     # [win]
+    - if not exist %PREFIX_LIB%\ANSI64.exp exit 1     # [win]
+    - if not exist %PREFIX_LIB%\ANSI64.lib exit 1     # [win]
 
 about:
   home: https://github.com/adoxa/ansicon
-  license: OTHER
+  license: Zlib
   license_family: OTHER
   license_file: LICENSE.txt
   summary: ansi console for windows
