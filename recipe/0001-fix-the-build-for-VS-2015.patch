@@ -1,0 +1,25 @@
+From cfd1906043ffef605479194ae8b5885e978a1dbc Mon Sep 17 00:00:00 2001
+From: Marek Waszkiewicz <mwaszkiewicz@anaconda.com>
+Date: Tue, 5 Dec 2023 17:50:01 +0100
+Subject: [PATCH] fix the build for VS>=2015
+
+---
+ makefile.vc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile.vc b/makefile.vc
+index dd5fcb6..618916e 100644
+--- a/makefile.vc
++++ b/makefile.vc
+@@ -75,7 +75,7 @@ RFLAGS = /nologo
+ RFLAGS = $(RFLAGS) /D_WIN64
+ !ENDIF
+ CFLAGS = /nologo /W3 /O2 $(NOSECCHK) /D_CRT_SECURE_NO_WARNINGS
+-LIBS = $(LIBS) kernel32.lib advapi32.lib
++LIBS = $(LIBS) kernel32.lib advapi32.lib msvcrt.lib vcruntime.lib ucrt.lib
+ 
+ # Identify ansicon.exe using "ANSI" as a version number.
+ LINK = /link /version:20033.18771 $(LINK) /fixed
+-- 
+2.42.0.windows.2
+

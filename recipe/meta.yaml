@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/adoxa/ansicon/archive/refs/tags/v{{ version }}.tar.gz
   sha256: e8135c9f3e6c1249f9e6bbabc6996ac42c2853db922e3b067e96e0cd31596ab3
+  patches:
+    - 0001-fix-the-build-for-VS-2015.patch
 
 build:
   number: 0
@@ -17,6 +19,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c')}}
+    - m2-patch  # [win]
 
 about:
   home: https://github.com/adoxa/ansicon
