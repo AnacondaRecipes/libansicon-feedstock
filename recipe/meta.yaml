@@ -1,0 +1,43 @@
+{% set version = "1.89" %}
+{% set name = "libansicon" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/adoxa/ansicon/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: e8135c9f3e6c1249f9e6bbabc6996ac42c2853db922e3b067e96e0cd31596ab3
+  patches:
+    - 0001-fix-the-build-for-VS-2015.patch
+
+build:
+  number: 0
+  skip: true  # [not win]
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c')}}
+    - m2-patch  # [win]
+
+test:
+  commands:
+    - if not exist %LIBRARY_INC%\ansicon.h exit 1     # [win]
+    - if not exist %LIBRARY_INC%\ansicon.rc exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\ansicon.exe exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\ANSI64.dll exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\ANSI64.exp exit 1     # [win]
+    - if not exist %LIBRARY_LIB%\ANSI64.lib exit 1     # [win]
+
+about:
+  home: https://github.com/adoxa/ansicon
+  license: Zlib
+  license_family: OTHER
+  license_file: LICENSE.txt
+  summary: ansi console for windows
+  description: |
+    ANSICON provides ANSI escape sequences for Windows console programs. 
+    It provides much the same functionality as ANSI.SYS does for MS-DOS.
+  dev_url: https://github.com/adoxa/ansicon
+  doc_url: https://github.com/adoxa/ansicon
