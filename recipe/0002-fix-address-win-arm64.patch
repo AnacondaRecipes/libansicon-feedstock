@@ -1,0 +1,13 @@
+diff --git a/makefile.vc b/makefile.vc
+index 5ce823a..73bc0c6 100644
+--- a/makefile.vc
++++ b/makefile.vc
+@@ -126,7 +126,7 @@ x64\ansicon.exe: x64\ansicon.obj x64\ansi64.lib $(CRT) x64\ansicon.res
+ 
+ x64\ANSI64.dll: x64\ANSI.obj $(X64OBJS) x64\ansi.res
+ 	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \
+-		      /base:0xAC000000 /entry:DllMain
++		      /base:0x1AC000000 /entry:DllMain
+ 
+ x64\ANSI32.dll: x64\ANSI32.obj $(X6432OBJS) x86\ansi.res
+ 	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \

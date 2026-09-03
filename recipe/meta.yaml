@@ -10,6 +10,7 @@ source:
   sha256: e8135c9f3e6c1249f9e6bbabc6996ac42c2853db922e3b067e96e0cd31596ab3
   patches:
     - 0001-fix-the-build-for-VS-2015.patch
+    - 0002-fix-address-win-arm64.patch
 
 build:
   number: 1
