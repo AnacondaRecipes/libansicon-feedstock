@@ -2,7 +2,7 @@
 {% set name = "libansicon" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -12,14 +12,14 @@ source:
     - 0001-fix-the-build-for-VS-2015.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not win]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c')}}
-    - m2-patch  # [win]
+    - {{ stdlib('c') }}
 
 test:
   commands:
