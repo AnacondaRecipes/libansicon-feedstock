@@ -1,0 +1,22 @@
+diff --git a/makefile.vc b/makefile.vc
+index 5ce823a..36f8626 100644
+--- a/makefile.vc
++++ b/makefile.vc
+@@ -78,7 +78,7 @@ CFLAGS = /nologo /W3 /O2 $(NOSECCHK) /D_CRT_SECURE_NO_WARNINGS
+ LIBS = $(LIBS) kernel32.lib advapi32.lib msvcrt.lib vcruntime.lib ucrt.lib
+ 
+ # Identify ansicon.exe using "ANSI" as a version number.
+-LINK = /link /version:20033.18771 $(LINK) /fixed
++LINK = /link /version:20033.18771 $(LINK)
+ 
+ X86OBJS = x86\injdll.obj x86\procrva.obj x86\proctype.obj x86\util.obj
+ X64OBJS = x64\injdll.obj x64\procrva.obj x64\proctype.obj x64\util.obj
+@@ -126,7 +126,7 @@ x64\ansicon.exe: x64\ansicon.obj x64\ansi64.lib $(CRT) x64\ansicon.res
+ 
+ x64\ANSI64.dll: x64\ANSI.obj $(X64OBJS) x64\ansi.res
+ 	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \
+-		      /base:0xAC000000 /entry:DllMain
++		      /base:0x1AC000000 /entry:DllMain
+ 
+ x64\ANSI32.dll: x64\ANSI32.obj $(X6432OBJS) x86\ansi.res
+ 	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \

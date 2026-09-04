@@ -8,7 +8,7 @@ Subject: [PATCH] fix the build for VS>=2015
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/makefile.vc b/makefile.vc
-index dd5fcb6..618916e 100644
+index dd5fcb6..5ce823a 100644
 --- a/makefile.vc
 +++ b/makefile.vc
 @@ -75,7 +75,7 @@ RFLAGS = /nologo
@@ -20,6 +20,25 @@ index dd5fcb6..618916e 100644
  
  # Identify ansicon.exe using "ANSI" as a version number.
  LINK = /link /version:20033.18771 $(LINK) /fixed
--- 
-2.42.0.windows.2
-
+@@ -115,7 +115,7 @@ x86\ansicon.exe: x86\ansicon.obj x86\ansi32.lib $(CRT) x86\ansicon.res
+ !ENDIF
+ 
+ x86\ANSI32.dll: x86\ANSI.obj $(X86OBJS) x86\ansi.res
+-	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib /link \
++	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \
+ 		      /base:0xAC0000 /entry:DllMain /filealign:512
+ 
+ x64:
+@@ -125,11 +125,11 @@ x64\ansicon.exe: x64\ansicon.obj x64\ansi64.lib $(CRT) x64\ansicon.res
+ 	$(LDmsg)$(CC) /nologo $(SHARE) /Fe$@ $** $(LIBS) $(LINK)
+ 
+ x64\ANSI64.dll: x64\ANSI.obj $(X64OBJS) x64\ansi.res
+-	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib /link \
++	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \
+ 		      /base:0xAC000000 /entry:DllMain
+ 
+ x64\ANSI32.dll: x64\ANSI32.obj $(X6432OBJS) x86\ansi.res
+-	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib /link \
++	$(LDmsg)$(CC) /nologo /LD /Fe$@ $** kernel32.lib msvcrt.lib vcruntime.lib ucrt.lib /link \
+ 		      /base:0xAC0000 /entry:DllMain /filealign:512 \
+ 		      /largeaddressaware
